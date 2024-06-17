@@ -1,0 +1,40 @@
+{%include 'header.html'%}
+<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12" style="padding-top: 100px;">
+    <div class="card" >
+        <h5 class="card-header">Product Details</h5>
+        <div class="card-body">
+            <div class="table-responsive ">
+                <table class="table table-bordered">
+                    <thead style="background: #ff407b;color: #FFF">
+                        <tr class="white">
+                            <th>s.no</th>
+							<th>Product Name</th>
+							<th>Category Name</th>
+							<th>Price</th>
+							<th>Image</th>
+							<th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for i in b %}
+                        <tr>
+                            <td>{{forloop.counter}}</td>
+							<td>{{i.p_name}}</td>
+							<td>{{i.category.name}}</td>
+							<td>{{i.p_price}}</td>
+							<td><img src="/media/{{i.image}}" width="50px"></td>
+							<td><a href="{%url 'product_edit' pk=i.id %}" class="btn btn-success">Edit</a>
+							<a href="{%url 'product_delete' pk=i.id %}" class="btn btn-danger" onclick="return confirm('Are you sure want to delete?')"> Delete </a></td>
+                        </tr>
+                        {% empty %}
+                        <tr>
+                            <td colspan="8" class="text-center bg-primary">No Category</td>
+                        </tr>
+                       {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+{% include 'footer.html' %}

@@ -1,0 +1,54 @@
+{%include 'header.html'%}
+<div class="container" style="margin:0 auto;padding-top:100px;">
+<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+    <div class="card">
+        <h5 class="card-header">Update Prodcut</h5>
+        <div class="card-body">
+            {% if messages %}
+                {% for i in messages %}
+                    <div class="alert alert-success">{{i}}</div>
+                {% endfor %}
+            {% endif %}
+            <form  id="basicform" method="post" enctype="multipart/form-data">{% csrf_token %}
+            	{% for i in value %}
+                <div class="form-group">
+                    <label for="inputUserName">Product Name</label>
+                    <input id="inputUserName" type="text" name="name" required="required"  class="form-control" value="{{i.p_name}}">
+                </div>
+                
+                <div class="form-group">
+                	<label for="inputUserName">Category</label>
+                    <select name='category'  class="form-control" required="required">
+						<option value="">Select Category</option>
+						{% for i in b %}
+						<option value ={{i.id}}>{{i.name}}</option>
+						{% endfor %}
+					</select>
+                </div>
+                <div class="form-group">
+                    <label for="inputUserName">Price</label>
+                    <input id="inputUserName" type="text" name="price" required="required"  class="form-control" value="{{i.p_price}}">
+                </div>
+                <div class="form-group">
+                    <label for="inputUserName">Descrption</label>
+                    <textarea name="con" class="form-control" required="required">{{i.note}}</textarea>  
+                </div>
+                
+                <div class="row">
+                    <div class="col-sm-6 pl-0">
+                    </div>
+                    <div class="col-sm-6 pl-0">
+                        <p class="text-right">
+                            <button type="submit" class="btn btn-space btn-primary">Update Product</button>
+                        </p>
+                    </div>
+                </div>
+                {% endfor %}
+            </form>
+        </div>
+    </div>
+</div>
+</div>
+{%include 'footer.html'%}
+
+

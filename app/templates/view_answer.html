@@ -1,0 +1,20 @@
+{%include 'header.html'%}
+<div class="container" style="margin:0 auto;padding-top:100px;">
+<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+    <div class="card">
+        <h5 class="card-header">View Answer</h5>
+        <div class="card-body">
+            
+                {% for i in a %}
+                <h2>Question: {{i.question}}</h2>
+                <div class="form-group">
+                    <label for="inputUserName">Answer</label>
+                    <textarea name="question" class="form-control" required="required" readonly="readonly">{{i.answer}}</textarea>  
+                </div>
+            {% endfor %}
+            
+        </div>
+    </div>
+</div>
+</div>
+{%include 'footer.html'%}

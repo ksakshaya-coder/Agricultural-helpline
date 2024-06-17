@@ -1,0 +1,52 @@
+ {% include 'header.html' %}
+ <section class="ftco-section">
+      <div class="container" >
+        <center><form method="post" style=" margin:30px;">{% csrf_token %}
+          <div class="row">
+            <div class="col-md-5"><input type="text" name="search" class="form-control" placeholder="Search Weather Based on District..."></div><div class="col-md-3"><input type="date" name="date" class="form-control" placeholder="Search Weather Based on District..."></div><div class="col-md-3"><input type="submit"  class="btn btn-info" value="Search Weather" style="padding-top:15px; padding-bottom: 15px;"></div>
+          </div>
+        </form></center>
+        <div class="row no-gutters justify-content-center ">
+          <div class="col-md-7 text-center heading-section " style="padding-top: 30px;">
+            <h2></h2>
+          </div>
+        </div>
+                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12" >
+    <div class="card" >
+        <h5 class="card-header">Weather Details</h5>
+        <div class="card-body">
+            <div class="table-responsive ">
+                <table class="table table-bordered">
+                    <thead style="background: #ff407b;color: #FFF">
+                        <tr class="white">
+                            <th scope="col" >District Name</th>
+                            <th scope="col">Temprature</th>
+                            <th scope="col">Humutity</th>
+                            <th scope="col">Rainfall</th>
+                            <th scope="col">Chance of Rain</th>
+                            <th scope="col">Date</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for i in b %}
+                        <tr>
+                            <th scope="row">{{forloop.counter}}</th>
+                            <td>{{i.temprature}}</td>
+                            <td>{{i.description}}</td>
+                            <td>{{i.rainfall}}</td>
+                            <td>{{i.chance_of_rain}}</td>
+                            <td>{{i.date}}</td>
+                        </tr>
+                        {% empty %}
+                        <tr>
+                            <td colspan="8" class="text-center bg-primary">No Weather Details</td>
+                        </tr>
+                       {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+      </section>

@@ -1,0 +1,39 @@
+{%include 'temheader.html'%}
+{% load static %}
+<link rel="stylesheet" href="{% static 'plugins/fontawesome-free/css/all.min.css' %}">
+
+<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12" style="padding-top:180px;padding-bottom: 60px;">
+    <div class="card" >
+        <h5 class="card-header">User Video Details</h5>
+        <div class="card-body">
+        <div class="row">
+        {% for i in a %}
+        <div class="col-md-6">
+            <h4>{{i.title}}</h4>
+            <h4><b>Download Video:</b> <a href="/media/{{i.video}}" class="btn btn-info"><i class="fa fa-download"></i> Download</a></h4>
+            <h4>Description</h4>
+            <p>{{i.desc}}</p>
+            <div  style="float: left;margin-right: 30px;text-transform: capitalize;">
+            <h4>{% if i.user_id.user_type == 'Consultant' %} <b>Agriculture Consultant:</b>
+            {% elif i.user_id.user_type == 'man' %} <b>Businessman Name:</b>
+            {% elif i.user_id.user_type == 'ngo' %} <b>NGO Name:</b>
+            {% else %}
+            <p></p>
+            {% endif %}
+            {{i.user_id.name}}
+            </h4>
+            </div>
+            <div  style="float: left;">
+            <a href="{% url 'contact' %}?email={{i.user_id.email}}" class="btn btn-success"><i class="fa fa-envelope"></i> Message</a>
+            </div>
+            <div style="clear: both;"></div>
+
+        </div>
+        {% endfor %}
+    </div>
+    </div>
+  </div>
+   </div>
+    </div>
+
+{%include 'temfooter.html'%}

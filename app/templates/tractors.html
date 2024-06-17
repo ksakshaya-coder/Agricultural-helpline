@@ -1,0 +1,26 @@
+{%include 'temheader.html'%}
+
+<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12" style="padding-top: 50px;padding-bottom: 30px;padding-bottom: 50px;">
+    <div class="card" style="margin-top: 100px;">
+        <h5 class="card-header">Tractor Details</h5>
+        <div class="card-body" style="margin-top: 20px;">
+        <div class="row">
+		{% for i in a %}
+		<div class="col-md-5">
+			<img src="/media/{{i.image}}" style="width:100%;">
+
+		</div>
+		<div class="col-md-7">
+			<p>Amount: {{i.amount}} Rs</p>
+			<p>Lease/Sale: {{i.lease}}</p>
+			<h5>Tractor Features </h5>
+			<p>{{i.feature}}</p>
+			<a href="{% url 'enquiry' pk=i.id%}" class="btn btn-success">Enquiry Now</a>
+		</div>
+		{% endfor %}
+	</div>
+  </div>
+   </div>
+    </div>
+
+{%include 'temfooter.html'%}

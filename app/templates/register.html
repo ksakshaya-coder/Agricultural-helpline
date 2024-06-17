@@ -1,0 +1,61 @@
+{%include 'temheader.html'%}
+{% load static %}
+<style type="text/css">
+  .ftco-navbar-light, .ftco-navbar-light.scrolled
+  {
+    background: #417690 !important;
+  }
+</style>
+
+    <section class="ftco-section">
+      <div class="container">
+        <div class="row no-gutters justify-content-center " style="padding-bottom: 0;">
+          <div class="col-md-7 text-center heading-section ftco-animate" style="padding-top: 30px;">
+            <h2>Register Your Details</h2>
+          </div>
+        </div>
+		
+        <div class="row d-flex">
+        <center>
+          <div class="col-md-8 ftco-animate makereservation p-5 bg-light">
+              {% if messages %}
+              {% for i in messages %}
+                <div class="alert alert-success">{{i}}</div>
+              {% endfor %}
+            {% endif %}
+            <form  method="post">{% csrf_token %}
+              <div class="row">
+			
+                    <label for="">Name</label>
+                    <input type="text" class="form-control" name="uname" placeholder="Your Name" required="required">
+                    <label for="">Mobile Number</label>
+                    <input type="text" class="form-control" name="mobile"  placeholder="Your number" required="required">
+                 
+                    <label for="">Email</label>
+                    <input type="email" class="form-control" name="email" placeholder="Enter Your Email" required="required">
+
+                    <label for="">Password</label>
+                    <input type="password" class="form-control" name="pwd" placeholder="Enter Your Password" required="required">
+                    <label for="">User Type</label>
+                    <select name="user_type" class="form-control">
+                      <option value="">Select</option>
+                      <option value="farmer">Farmer</option>
+                      <option value="Consultant">Agriculture Consultant </option>
+                      
+
+                    </select>
+                   
+                    <label for="">Address</label>
+                    <textarea  class="form-control" name="address" required="required"></textarea>
+                <div class="col-md-12 mt-3">
+                  <div class="form-group">
+                    <input type="submit" value="Create an Account" class="btn btn-info btn-lg">
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+		</center>
+    </section>
+{%include 'temfooter.html'%}

@@ -1,0 +1,31 @@
+{%include 'header.html'%}
+<div class="container" style="margin:0 auto;padding-top:100px;">
+<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+    <div class="card">
+        <h5 class="card-header">View Answer</h5>
+        <div class="card-body">
+            <form method="post">{% csrf_token %}
+                {% for i in a %}
+                <h2>Question: {{i.question}}</h2>
+                <div class="form-group">
+                    <label for="inputUserName">Question</label>
+                    <textarea name="answer" class="form-control" required="required" >{{i.answer}}</textarea>  
+                </div>
+            {% endfor %}
+
+                <div class="row">
+                    <div class="col-sm-6 pl-0">
+                    </div>
+                    <div class="col-sm-6 pl-0">
+                        <p class="text-right">
+                            <button type="submit" class="btn btn-space btn-primary">Reply</button>
+                            <button type="reset" class="btn btn-space btn-secondary">Cancel</button>
+                        </p>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+</div>
+{%include 'footer.html'%}

@@ -1,0 +1,53 @@
+{%include 'header.html'%}
+<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12" style="padding-top: 100px;">
+    <div class="card" >
+        <h5 class="card-header">Tractor Enquiry Details</h5>
+        <div class="card-body">
+            <div class="table-responsive ">
+                <table class="table table-bordered">
+                    <thead style="background: #ff407b;color: #FFF">
+                        <tr class="white">
+                            <th scope="col" >S.No</th>
+                            <th scope="col">User Name</th>
+                            <th scope="col">Email Id</th>
+                            <th scope="col">Mobile</th>
+                            <th scope="col">Tractor Image</th>
+
+                            <th scope="col">Tractor Amount</th>
+                            <th scope="col">Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for i in a %}
+                        <tr>
+                            <th scope="row">{{forloop.counter}}</th>
+                            <td>{{i.tractor_id.user_id.name}}</td>
+                            <td>{{i.tractor_id.user_id.email}}</td>
+                            <td>{{i.tractor_id.user_id.mobile}}</td>
+                            <td><a href="/media/{{i.tractor_id.image}}" class="btn btn-info" target="_blank"><i class="fa fa-download"></i></td>
+                            <td>{{i.tractor_id.amount}} Rs</td>
+                            <td>
+                                {% if i.status == 'pending' %}
+                                    <span style="color: orange;font-weight: bold;">Waiting for Response</span>
+
+                                {% elif i.status == 'accept' %}
+                                    <span style="color: green;font-weight: bold;">Accepted</span>
+                                {% elif i.status == 'reject' %}
+                                    <span style="color: red;font-weight: bold;">Rejected</span>
+
+                                {% endif %}
+                            </td>
+                                
+                        </tr>
+                        {% empty %}
+                        <tr>
+                            <td colspan="8" class="text-center bg-primary">No Enquiry</td>
+                        </tr>
+                       {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+{% include 'footer.html' %}

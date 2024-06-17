@@ -1,0 +1,44 @@
+{%include 'temheader.html'%}
+{% load static %}
+
+
+    <section class="ftco-section">
+      <div class="container" >
+        <div class="row no-gutters justify-content-center ">
+          <div class="col-md-7 text-center heading-section " style="padding-top: 30px;">
+            <h2> LOGIN</h2>
+          </div>
+        </div>
+		<center>
+          <div class="col-md-6 makereservation p-5 bg-light">
+		 {% if messages %}
+              {% for i in messages %}
+                <div class="alert alert-danger">{{i}}</div>
+              {% endfor %}
+            {% endif %}
+            <form  method="post" action="{% url 'user_login' %}">{% csrf_token %}
+              <div class="row">
+                  <label for="">Username</label>
+                    <input type="text" class="form-control"  name="username" required="required">
+                 
+               <label for="">Password</label>
+                    <input type="password" class="form-control" name="password" required="required" >
+                     <label for="">User Type</label>
+                    <select name="user_type" class="form-control">
+                      <option value="">Select</option>
+                      <option value="farmer">Farmer</option>
+                      <option value="Consultant">Agriculture Consultant</option>
+                      
+
+                    </select>
+                </div>
+                <div class="col-md-12 mt-3">
+                  <div class="form-group">
+                    <input type="submit" value="Login" class="btn btn-info btn-lg">
+                  </div>
+                </div>
+              </div>
+            </form>
+          </center>
+      </section>
+{%include 'temfooter.html'%}

@@ -1,0 +1,26 @@
+{%include 'temheader.html'%}
+
+<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12" style="padding-top: 50px;padding-bottom: 30px;">
+    <div class="card" >
+        <h5 class="card-header">Product Details</h5>
+        <div class="card-body">
+        <div class="row">
+		{% for i in product %}
+		<div class="col-md-4" style="text-align: center;">
+			<h4>{{i.p_name}}</h4>
+			<img src="/media/{{i.image}}" width="300px" height="300px">
+			<p>Category Name: {{i.category.name}}</p>
+			<h5>Price: {{i.p_price}}rs</h5>
+			
+
+		</div>
+		{% empty %}
+
+		<h2 style="text-align: center;">No Products</h2>
+		{% endfor %}
+	</div>
+  </div>
+   </div>
+    </div>
+
+{%include 'temfooter.html'%}

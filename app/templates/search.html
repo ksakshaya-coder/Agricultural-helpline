@@ -1,0 +1,55 @@
+{%include 'temheader.html'%}
+{% load static %}
+<link rel="stylesheet" href="{% static 'plugins/fontawesome-free/css/all.min.css' %}">
+
+    <section class="ftco-section">
+      <div class="container" >
+        <center><form method="post" style=" margin:30px;">{% csrf_token %}
+          <div class="row">
+            <div class="col-md-5"><input type="text" name="search" class="form-control" placeholder="Search..."></div>
+            <div class="col-md-3"><input type="text" name="year" class="form-control" placeholder="Search Month..."></div>
+            <div class="col-md-3"><input type="submit"  class="btn btn-info" value="Search Detail" style="padding-top:15px; padding-bottom: 15px;"></div>
+          </div>
+        </form></center>
+        <div class="row no-gutters justify-content-center ">
+          <div class="col-md-7 text-center heading-section " style="padding-top: 30px;">
+            <h2></h2>
+          </div>
+        </div>
+                {% for i in ids %}
+                <div class="row">
+
+                <div class="col-md-4" style="text-align: center;">
+                   <h2 style="color: green;">{{i.name}}</h2>
+                  <img src="/media/{{i.image}}" style="width: 100%;">
+                  
+                </div>
+                <div class="col-md-7">
+                	<h3 style="padding-top: 40px;">Water Level</h3>
+                	<p style="padding:0;margin: 0;">{{i.water_contain}}</p>
+                  <h3 style="font-size: 20px;">Fertilizer's Used</h3>
+                <p style="padding:0;margin: 0;">{{i.fertilizer}}</p>
+                 <h3 style="font-size: 20px;">Nature of Soil Details</h3>
+                <p style="padding:0;margin: 0;">{{i.soil}}</p>
+                
+                <div style="clear: both;"></div>
+                </div>
+                <div style="clear: both;"></div>
+                </div>
+                <h3 style="padding-top: 20px;font-size: 20px;">Other Details</h3>
+                <p style="padding: 0;">{{i.others}}</p>
+                  <h3 style="font-size: 20px;">Season</h3>
+                <p style="padding:0;margin: 0;">{{i.season}}</p>
+
+  <h3 style="font-size: 20px;">Area</h3>
+                <p style="padding:0;margin: 0;">{{i.area}}</p>
+
+                {% empty %}
+                 <div><h2 style="text-align:center;">No Forming Found.....</h2></div>
+                <br><br><br><br><br><br>
+            {% endfor %}
+
+        
+		    </div>
+      </section>
+{%include 'temfooter.html'%}
