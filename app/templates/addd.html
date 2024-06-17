@@ -1,0 +1,42 @@
+{%include 'header.html'%}
+<div class="container" style="margin:0 auto;padding-top:100px;">
+<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+    <div class="card">
+        <h5 class="card-header">Ask Question</h5>
+        <div class="card-body">
+            {% if messages %}
+                {% for i in messages %}
+                    <div class="alert alert-success">{{i}}</div>
+                {% endfor %}
+            {% endif %}
+            <form  id="basicform" method="post" enctype="multipart/form-data">{% csrf_token %}
+                <div class="form-group">
+                    <label for="inputUserName">Choose Agriculture Consultant Name</label>
+                    <select name="name" class="form-control">
+                    <option value="">Select</option>
+                    {% for i in detail %}
+                        <option value={{i.id}}>{{i.name}}</option>
+                    {% endfor %}
+                </select>
+                </div>
+                <div class="form-group">
+                    <label for="inputUserName">Question</label>
+                    <textarea name="question" class="form-control" required="required"></textarea>  
+                </div>
+                
+                <div class="row">
+                    <div class="col-sm-6 pl-0">
+                    </div>
+                    <div class="col-sm-6 pl-0">
+                        <p class="text-right">
+                            <button type="submit" class="btn btn-space btn-primary">Ask Question</button>
+                            <button type="reset" class="btn btn-space btn-secondary">Cancel</button>
+                        </p>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+</div>
+{%include 'footer.html'%}

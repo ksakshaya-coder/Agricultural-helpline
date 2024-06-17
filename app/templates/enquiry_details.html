@@ -1,0 +1,49 @@
+{%include 'header.html'%}
+<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12" style="padding-top: 100px;">
+    <div class="card" >
+        <h5 class="card-header">Tractor Enquiry Details</h5>
+        <div class="card-body">
+            <div class="table-responsive ">
+                <table class="table table-bordered">
+                    <thead style="background: #ff407b;color: #FFF">
+                        <tr class="white">
+                            <th scope="col" >S.No</th>
+                            <th scope="col">Farmer Name</th>
+                            <th scope="col">Email Id</th>
+                            <th scope="col">Mobile</th>
+                            <th scope="col">Tractor Amount</th>
+                            <th scope="col">Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for i in a %}
+                        <tr>
+                            <th scope="row">{{forloop.counter}}</th>
+                            <td>{{i.user_id.name}}</td>
+                            <td>{{i.user_id.email}}</td>
+                            <td>{{i.user_id.mobile}}</td>
+                            <td>{{i.tractor_id.amount}} Rs</td>
+                            <td>
+                                {% if i.status == 'pending' %}
+                                <a href="{% url 'accept' pk=i.id %}" class="btn btn-success">Accept</a> <a href="{% url 'reject' pk=i.id %}" class="btn btn-danger">Reject</a>
+                                {% elif i.status == 'accept' %}
+                                    <span style="color: green;font-weight: bold;">Accepted</span>
+                                {% elif i.status == 'reject' %}
+                                    <span style="color: red;font-weight: bold;">Rejected</span>
+
+                                {% endif %}
+                            </td>
+                                
+                        </tr>
+                        {% empty %}
+                        <tr>
+                            <td colspan="8" class="text-center bg-primary">No Enquiry</td>
+                        </tr>
+                       {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+{% include 'footer.html' %}

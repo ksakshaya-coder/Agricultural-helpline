@@ -1,0 +1,16 @@
+{%include 'temheader.html'%}
+
+<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12" style="padding-top: 50px;padding-bottom: 30px;padding-bottom: 50px;">
+    <div class="card" style="margin-top: 100px;">
+        <h5 class="card-header">Tractor Details</h5>
+        <div class="card-body" style="margin-top: 20px;">
+         {% if messages %}
+                {% for i in messages %}
+                    <div class="alert alert-success">{{i}}</div>
+                {% endfor %}
+            {% endif %}
+  </div>
+   </div>
+    </div>
+
+{%include 'temfooter.html'%}

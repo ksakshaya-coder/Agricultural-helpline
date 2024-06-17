@@ -1,0 +1,192 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Agri Helpline</title>
+  <!-- Tell the browser to be responsive to screen width -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="{% static 'plugins/fontawesome-free/css/all.min.css' %}">
+  <!-- Ionicons -->
+  <link rel="stylesheet" href="{% static 'https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css' %}">
+  <!-- Tempusdominus Bbootstrap 4 -->
+  <link rel="stylesheet" href="{% static 'plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css' %}">
+  <!-- iCheck -->
+  <link rel="stylesheet" href="{% static 'plugins/icheck-bootstrap/icheck-bootstrap.min.css' %}">
+  <!-- JQVMap -->
+  <link rel="stylesheet" href="{% static 'plugins/jqvmap/jqvmap.min.css' %}">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="{% static 'dist/css/adminlte.min.css' %}">
+  <!-- overlayScrollbars -->
+  <link rel="stylesheet" href="{% static 'plugins/overlayScrollbars/css/OverlayScrollbars.min.css' %}">
+  <!-- Daterange picker -->
+  <link rel="stylesheet" href="{% static 'plugins/daterangepicker/daterangepicker.css' %}">
+  <!-- summernote -->
+  <link rel="stylesheet" href="{% static 'plugins/summernote/summernote-bs4.css' %}">
+  <!-- Google Font: Source Sans Pro -->
+  <link href="{% static 'https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet' %}">
+</head>
+<body class="hold-transition sidebar-mini layout-fixed">
+<div class="wrapper">
+
+  
+
+  <!-- Main Sidebar Container -->
+  <aside class="main-sidebar sidebar-dark-primary elevation-4">
+    <!-- Brand Logo -->
+    <a href="{% url 'home' %}" class="brand-link">
+      
+      <span class="brand-text font-weight-light" style="font-family: monospace;font-size: 20px;color:#000;">Agri Helpline</span>
+    </a>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <nav class="mt-2">
+        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+          
+			<li class="nav-item">
+            <a href="{% url 'dashboard' %}" class="nav-link">
+              <i class="nav-icon fas fa-tachometer-alt"></i>
+              <p>
+               Dashboard
+              </p>
+            </a>
+          </li>
+      {% if request.session.u_type == 'farmer' %}
+		  <li class="nav-item">
+            <a href="{% url 'seeds_detail' %}" class="nav-link">
+              <i class="nav-icon fas fa-eye"></i>
+              <p>
+                Seed Stocks
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="{% url 'weather' %}" class="nav-link">
+              <i class="nav-icon fas fa-book"></i>
+              <p>
+                Weather Detail
+              </p>
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a href="{% url 'question' %}" class="nav-link">
+              <i class="nav-icon fas fa-comment"></i>
+              <p>
+                Ask Question
+              </p>
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a href="{% url 'view_question' %}" class="nav-link">
+              <i class="nav-icon fas fa-book"></i>
+              <p>
+                View Question
+              </p>
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a href="{% url 'tractor_enquiry' %}" class="nav-link">
+              <i class="nav-icon fas fa-copy"></i>
+              <p>
+                View Enquiry
+              </p>
+            </a>
+          </li>
+           {% endif %}
+           {% if request.session.u_type != 'farmer' and request.session.u_type != 'student' and request.session.u_type != 'User' %}
+              <li class="nav-item has-treeview">
+            <a href="{% url 'add_video' %}" class="nav-link">
+              <i class="nav-icon fa fa-upload"></i>
+              <p>
+                Upload Video
+              </p>
+            </a>
+          </li>
+          <li class="nav-item has-treeview">
+            <a href="{% url 'videos' %}" class="nav-link">
+              <i class="nav-icon fa fa-eye"></i>
+              <p>
+                Videos
+              </p>
+            </a>
+          </li>
+
+          <li class="nav-item has-treeview">
+            <a href="{% url 'answer' %}" class="nav-link">
+              <i class="nav-icon fa fa-comment"></i>
+              <p>
+                Questions
+              </p>
+            </a>
+          </li>
+           {% endif %}
+           {% if request.session.u_type == 'User' %}
+
+          <li class="nav-item has-treeview">
+            <a href="{% url 'add_tractor' %}" class="nav-link">
+              <i class="nav-icon fa fa-plus"></i>
+              <p>
+                Add Tractor
+              </p>
+            </a>
+          </li>
+
+          <li class="nav-item has-treeview">
+            <a href="{% url 'view_tractor' %}" class="nav-link">
+              <i class="nav-icon fa fa-table"></i>
+              <p>
+                view Tractor
+              </p>
+            </a>
+          </li>
+
+          <li class="nav-item has-treeview">
+            <a href="{% url 'enquiry_details' %}" class="nav-link">
+              <i class="nav-icon fa fa-book"></i>
+              <p>
+                view Enquiry
+              </p>
+            </a>
+          </li>
+          {% endif %}
+           <li class="nav-item has-treeview">
+            <a href="{% url 'logout' %}" class="nav-link">
+              <i class="nav-icon fas fa-inbox"></i> 
+              <p>
+                 logout
+              </p>
+            </a>
+           </li>
+
+          
+        </ul>
+      </nav>
+      <!-- /.sidebar-menu -->
+    </div>
+    <!-- /.sidebar -->
+  </aside>
+  <style type="text/css">
+    th,tr
+    {
+      text-align: center;
+    }
+    [class*=sidebar-dark-]
+    {
+      background-color: #417690 !important;
+    }
+    .nav-item p
+    {
+      color: #FFF !important;
+      font-family: Monotype Corsiva;
+      font-size: 22px;
+    }
+  </style>
+
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">

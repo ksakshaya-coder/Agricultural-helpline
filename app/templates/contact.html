@@ -1,0 +1,39 @@
+{%include 'temheader.html'%}
+  
+    <section class="ftco-section contact-section">
+
+      <div class="container">
+        <h1 class="mb-3" style="font-size:25px;color: green;margin: 30px 0;">Message</h1>
+        <div class="row block-9 mb-4">
+          
+          <div class="col-md-6">
+          {% if messages %}
+            {% for i in messages %}
+              <div class="alert alert-success">{{i}}</div>
+            {% endfor %}
+          {% endif %}
+            <form method="post">{% csrf_token %}
+              <div class="form-group">
+                <input type="text" class="form-control" placeholder="Your Name" name="name">
+              </div>
+              <div class="form-group">
+                <input type="text" class="form-control" placeholder="Your Email" name="mail">
+              </div>
+              <div class="form-group">
+                <input type="text" class="form-control" placeholder="Subject" name="subject">
+              </div>
+              <div class="form-group">
+                <textarea  id="" cols="30" rows="7" class="form-control" placeholder="Message" name="msg"></textarea>
+              </div>
+              <div class="form-group">
+                <input type="submit" value="Send Message" class="btn btn-primary py-3 px-5">
+              </div>
+            </form>
+          </div>
+        </div>
+       
+      </div>
+    </section>
+{%include 'temfooter.html'%}
+
+   

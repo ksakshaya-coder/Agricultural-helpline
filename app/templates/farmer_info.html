@@ -1,0 +1,24 @@
+{%include 'temheader.html'%}
+
+<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12" style="padding-top: 50px;padding-bottom: 30px;padding-bottom: 50px;">
+    <div class="card" >
+        <h5 class="card-header">Farmer Details</h5>
+        <div class="card-body">
+        <div class="row">
+		{% for i in b %}
+		<div class="col-md-4" style="text-align: center;">
+			<img src="/media/{{i.image}}" style="width:200px;height: 200px;">
+			<h4>Farmer Name: {{i.name}}</h4>
+			<p>Mobile: {{i.mobile}}</p>
+			<h4>Address</h4>
+			<p>{{i.address}}</p>
+			<a href="{% url 'veg_product' %}?fid={{i.id}}" class="btn btn-info btn-lg" style="margin-bottom: 30px;background-color:#ff407b;border-color:#ff407b; ">View Product</a>
+
+		</div>
+		{% endfor %}
+	</div>
+  </div>
+   </div>
+    </div>
+
+{%include 'temfooter.html'%}

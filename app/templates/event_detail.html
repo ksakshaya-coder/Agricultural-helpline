@@ -1,0 +1,32 @@
+{%include 'temheader.html'%}
+
+<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12" style="padding-top: 50px;padding-bottom: 30px;padding-bottom: 50px;">
+    <div class="card" >
+        <h5 class="card-header">Event Details</h5>
+        <div class="card-body" style="margin-top: 20px;">
+        <div class="row">
+		{% for i in b %}
+		<div class="col-md-5">
+			<h4>Event Name: {{i.event_name}}</h4>
+			<img src="/media/{{i.image}}" style="width:100%;">
+
+		</div>
+		<div class="col-md-7">
+			<p>Event Type: {{i.type_of_event}}</p>
+			<p>Event Date: {{i.date}}</p>
+			<h5>About Event </h5>
+			<p>{{i.about_event}}</p>
+			<h4>Event Contacting Place</h4>
+			<p>{{i.place}}</p>
+			<h4>Event Contacting Address</h4>
+			<p>{{i.address}}</p>
+			<h3>Benefits</h3>
+			<p>{{i.benefits}}</p>
+		</div>
+		{% endfor %}
+	</div>
+  </div>
+   </div>
+    </div>
+
+{%include 'temfooter.html'%}
